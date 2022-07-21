@@ -83,12 +83,11 @@ class ItemResource < Avo::BaseResource
   #   is_image: true, 
   #   link_to_resource: true
 
-  #TODO
-  # field :demo_files, 
-  #   as: :files,
-  #   name: 'Files',
-  #   help: "help goes here",
-  #   sortable: true
+  field :demo_files, 
+    as: :files,
+    name: 'Files',
+    help: "help goes here",
+    sortable: true
 
   field :demo_gravatar, 
     as: :gravatar,
@@ -174,4 +173,13 @@ class ItemResource < Avo::BaseResource
     sortable: true,
     hide_on: [:index]
 
-end
+  field :tags, 
+    as: :tags,
+    help: "help goes here",
+    sortable: true,
+    acts_as_taggable_on: :tags
+    # close_on_select: false,
+    # placeholder: 'tags',
+    # suggestions: -> { Item.tags_suggestions },
+
+  end

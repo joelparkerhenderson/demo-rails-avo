@@ -604,3 +604,81 @@ end
     item.save!
 end
 ```
+
+
+## Tags
+
+Avo provides various ways to manage tags. We prefer using the gem [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
+
+Add to `Gemfile`:
+
+```ruby
+# Tags and their associations
+gem 'acts-as-taggable-on', '~> 9.0'
+```
+
+```sh
+bundle
+rake acts_as_taggable_on_engine:install:migrations
+bin/rails db:migrate
+```
+
+Edit file `app/models/item.rb` and add:
+
+```ruby
+acts_as_taggable_on :tags
+```
+
+Edit file `app/avo/resources/item_resource.rb` and add:
+
+```ruby
+field :tags, 
+  as: :tags
+```
+
+Refresh the app. 
+
+Verify that you can edit an item, create some tags, save the record, then see your tags.
+
+
+## ActiveStorage files
+
+Add to `Gemfile`:
+
+```ruby
+# Use Active Storage variant
+gem "image_processing", "~> 1.2"
+```
+
+```sh
+bundle
+bin/rails active_storage:install
+bin/rails db:mgirate
+```
+
+Add to file `app/models/item.rb`:
+
+```ruby
+has_many_attached :demo_files
+```
+
+Add to file `app/avo/resources/item_resource.rb`:
+
+```ruby
+field :demo_files, 
+  as: :files,
+  name: 'Files',
+  help: "help goes here",
+  sortable: true
+```
+
+Optionally create some demo files:
+
+```sh
+echo "alpha" > tmp/alpha.txt
+echo "bravo" > tmp/bravo.txt
+```
+
+Refresh the app. 
+
+Verify that you can edit an item, upload some files, save the record, then see your file entries.
