@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  demo_badge: MyText
+  demo_boolean: false
+  demo_code: MyText
+  demo_country: MyText
+  demo_date: 2022-07-19
+  demo_datetime: 2022-07-19 17:31:37
+  demo_external_image: MyText
+  demo_file: 
+  demo_files: 
+  demo_gravatar: MyText
+  demo_markdown: MyText
+  demo_number: 1
+  demo_password: MyText
+  demo_progress_bar: 1
+  demo_select: 1
+  demo_status: MyText
+  demo_text: MyText
+  demo_textarea: MyText
+  demo_trix: MyText
+
+two:
+  demo_badge: MyText
+  demo_boolean: false
+  demo_code: MyText
+  demo_country: MyText
+  demo_date: 2022-07-19
+  demo_datetime: 2022-07-19 17:31:37
+  demo_external_image: MyText
+  demo_file: 
+  demo_files: 
+  demo_gravatar: MyText
+  demo_markdown: MyText
+  demo_number: 1
+  demo_password: MyText
+  demo_progress_bar: 1
+  demo_select: 1
+  demo_status: MyText
+  demo_text: MyText
+  demo_textarea: MyText
+  demo_trix: MyText

@@ -1,0 +1,112 @@
+<%= form_with(model: item) do |form| %>
+  <% if item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :demo_badge, style: "display: block" %>
+    <%= form.text_area :demo_badge %>
+  </div>
+
+  <div>
+    <%= form.label :demo_boolean, style: "display: block" %>
+    <%= form.check_box :demo_boolean %>
+  </div>
+
+  <div>
+    <%= form.label :demo_code, style: "display: block" %>
+    <%= form.text_area :demo_code %>
+  </div>
+
+  <div>
+    <%= form.label :demo_country, style: "display: block" %>
+    <%= form.text_area :demo_country %>
+  </div>
+
+  <div>
+    <%= form.label :demo_date, style: "display: block" %>
+    <%= form.date_field :demo_date %>
+  </div>
+
+  <div>
+    <%= form.label :demo_datetime, style: "display: block" %>
+    <%= form.datetime_field :demo_datetime %>
+  </div>
+
+  <div>
+    <%= form.label :demo_external_image, style: "display: block" %>
+    <%= form.text_area :demo_external_image %>
+  </div>
+
+  <div>
+    <%= form.label :demo_file, style: "display: block" %>
+    <%= form.text_field :demo_file %>
+  </div>
+
+  <div>
+    <%= form.label :demo_files, style: "display: block" %>
+    <%= form.text_field :demo_files %>
+  </div>
+
+  <div>
+    <%= form.label :demo_gravatar, style: "display: block" %>
+    <%= form.text_area :demo_gravatar %>
+  </div>
+
+  <div>
+    <%= form.label :demo_markdown, style: "display: block" %>
+    <%= form.text_area :demo_markdown %>
+  </div>
+
+  <div>
+    <%= form.label :demo_number, style: "display: block" %>
+    <%= form.number_field :demo_number %>
+  </div>
+
+  <div>
+    <%= form.label :demo_password, style: "display: block" %>
+    <%= form.text_area :demo_password %>
+  </div>
+
+  <div>
+    <%= form.label :demo_progress_bar, style: "display: block" %>
+    <%= form.number_field :demo_progress_bar %>
+  </div>
+
+  <div>
+    <%= form.label :demo_select, style: "display: block" %>
+    <%= form.number_field :demo_select %>
+  </div>
+
+  <div>
+    <%= form.label :demo_status, style: "display: block" %>
+    <%= form.text_area :demo_status %>
+  </div>
+
+  <div>
+    <%= form.label :demo_text, style: "display: block" %>
+    <%= form.text_area :demo_text %>
+  </div>
+
+  <div>
+    <%= form.label :demo_textarea, style: "display: block" %>
+    <%= form.text_area :demo_textarea %>
+  </div>
+
+  <div>
+    <%= form.label :demo_trix, style: "display: block" %>
+    <%= form.text_area :demo_trix %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
