@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.text :demo_code
       t.text :demo_country
       t.date :demo_date
-      t.datetime :demo_datetime
+      t.datetime :demo_date_time
       t.text :demo_external_image
       t.binary :demo_file
       t.binary :demo_files
