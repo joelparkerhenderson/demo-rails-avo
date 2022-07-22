@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @q = Item.ransack(params[:q])
     @items = @q.result(distinct: true)
   end
-  
+
   # GET /items/1 or /items/1.json
   def show
   end

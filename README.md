@@ -232,7 +232,7 @@ Enable authentication using Devise with typical  settings:
 
 ```ruby
 # Authentication with Devise
-config.current_user_method = :current_user 
+config.current_user_method = :current_user
 config.current_user_resource_name = :user
 ```
 
@@ -300,82 +300,82 @@ class ItemResource < Avo::BaseResource
 
   # All the fields we want
 
-  field :id, 
-    as: :id, 
+  field :id,
+    as: :id,
     sortable: true
 
-  field :demo_badge, 
+  field :demo_badge,
     as: :badge,
-    name: 'Badge', 
+    name: 'Badge',
     help: "help goes here",
     sortable: true,
-    options: { 
-      info: ["info", "i"], 
-      success: ["success", "s"], 
-      warning: ["warning", "w"], 
+    options: {
+      info: ["info", "i"],
+      success: ["success", "s"],
+      warning: ["warning", "w"],
       danger: ["danger", "d"],
     }
 
   field :demo_boolean,
     as: :boolean,
-    name: 'Boolean', 
+    name: 'Boolean',
     help: "help goes here",
     sortable: true
-    # true_value: 'yes', 
+    # true_value: 'yes',
     # false_value: 'no'
 
-  # field :demo_boolean_group, 
+  # field :demo_boolean_group,
   #   as: :boolean_group,
   #   help: "help goes here"
 
-  field :demo_code, 
+  field :demo_code,
     as: :code,
-    name: 'Code', 
+    name: 'Code',
     help: "help goes here",
-    theme: 'default', 
+    theme: 'default',
     language: 'ruby'
 
-  field :demo_country, 
+  field :demo_country,
     as: :country,
     name: 'Country',
     help: "help goes here",
     sortable: true,
     display_name: false
 
-  field :demo_date, 
+  field :demo_date,
     as: :date,
     name: 'Date',
     help: "help goes here",
     sortable: true
 
-  field :demo_date_time, 
+  field :demo_date_time,
     as: :date_time,
     name: 'Date Time',
     help: "help goes here",
     sortable: true
- 
-  field :demo_external_image, 
+
+  field :demo_external_image,
     as: :external_image,
     name: 'External Image',
     help: "help goes here",
     sortable: true
 
   #TODO
-  # field :demo_file, 
-  #   as: :file, 
+  # field :demo_file,
+  #   as: :file,
   #   name: 'File',
   #   help: "help goes here",
-  #   is_image: true, 
+  #   is_image: true,
   #   link_to_resource: true
 
   #TODO
-  # field :demo_files, 
+  # field :demo_files,
   #   as: :files,
   #   name: 'Files',
   #   help: "help goes here",
   #   sortable: true
 
-  field :demo_gravatar, 
+  field :demo_gravatar,
     as: :gravatar,
     name: 'Gravatar',
     help: "help goes here",
@@ -383,76 +383,76 @@ class ItemResource < Avo::BaseResource
     hide_on: [:index]
 
   #TODO
-  # field :demo_key_value, 
+  # field :demo_key_value,
   #   as: :key_value,
   #   name: 'Key-Value',
   #   help: "help goes here",
   #   sortable: true
 
-  field :demo_markdown, 
+  field :demo_markdown,
     as: :markdown,
     name: 'Markdown',
     help: "help goes here",
     sortable: true,
     hide_on: [:index]
 
-  field :demo_number, 
+  field :demo_number,
     as: :number,
     name: 'Number',
     help: "help goes here",
     sortable: true
 
-  field :demo_password, 
+  field :demo_password,
     as: :password,
     name: 'Password',
     help: "help goes here",
     sortable: true,
     hide_on: [:index]
 
-  field :demo_progress_bar, 
-    as: :progress_bar, 
+  field :demo_progress_bar,
+    as: :progress_bar,
     name: 'Progress Bar',
     help: "help goes here",
     sortable: true,
-    max: 100, 
+    max: 100,
     step: 1
 
   #TODO
-  # field :demo_select, 
+  # field :demo_select,
   #   as: :select,
   #   name: 'Select',
   #   help: "help goes here",
   #   sortable: true
 
-  field :demo_status, 
+  field :demo_status,
     as: :status,
     name: 'Status',
     help: "help goes here",
     sortable: true
-    # loading_when: ["loading", "loading2", "loading3"], 
+    # loading_when: ["loading", "loading2", "loading3"],
     # failed_when: ["failed", "failed2", "failed3"]
 
-  # field :demo_tags, 
+  # field :demo_tags,
   #   as: :tags,
   #   help: "help goes here",
   #   sortable: true
 
-  field :demo_text, 
+  field :demo_text,
     as: :text,
     name: 'Text',
     help: "help goes here",
-    placeholder: "placeholder goes here", 
+    placeholder: "placeholder goes here",
     sortable: true,
     hide_on: [:index]
 
-  field :demo_textarea, 
+  field :demo_textarea,
     as: :textarea,
     name: 'Text Area',
     help: "help goes here",
     sortable: true,
     hide_on: [:index]
 
-  field :demo_trix, 
+  field :demo_trix,
     as: :trix,
     name: 'Trix',
     help: "help goes here",
@@ -478,9 +478,9 @@ end
 
 def self.fab_badge_sampler
     [
-        "info", 
-        "success", 
-        "warning", 
+        "info",
+        "success",
+        "warning",
         "danger",
     ]
 end
@@ -551,8 +551,8 @@ def self.fab_status_sampler
     [
         "done",
         "complete",
-        "waiting", 
-        "running", 
+        "waiting",
+        "running",
         "failed",
     ]
 end
@@ -632,11 +632,11 @@ acts_as_taggable_on :tags
 Edit file `app/avo/resources/item_resource.rb` and add:
 
 ```ruby
-field :tags, 
+field :tags,
   as: :tags
 ```
 
-Restart the app. 
+Restart the app.
 
 Verify that you can edit an item, create some tags, save the record, then see your tags.
 
@@ -665,7 +665,7 @@ has_many_attached :demo_files
 Add to file `app/avo/resources/item_resource.rb`:
 
 ```ruby
-field :demo_files, 
+field :demo_files,
   as: :files,
   name: 'Files',
   help: "help goes here",
@@ -679,7 +679,7 @@ echo "alpha" > tmp/alpha.txt
 echo "bravo" > tmp/bravo.txt
 ```
 
-Restart the app. 
+Restart the app.
 
 Verify that you can edit an item, upload some files, save the record, then see your file entries.
 
@@ -705,7 +705,7 @@ class ItemResource < Avo::BaseResource
   # Avo search for Ransack search query
   self.search_query = ->(params:) do
     scope.ransack(
-      id_eq: params[:q], 
+      id_eq: params[:q],
       m: "or"
     ).result(distinct: false)
   end
@@ -715,7 +715,7 @@ class ItemResource < Avo::BaseResource
 end
 ```
 
-Restart the app. 
+Restart the app.
 
 Verify that Avo shows a top navigation search box, and that you can type in the box, and that the box shows a dropdown area that lists some matching items.
 
@@ -732,10 +732,10 @@ class ItemResource < Avo::BaseResource
   field :id, …
     as_label: true
   …
-  field :demo_text, … 
+  field :demo_text, …
     as_description: true
   …
-```    
+```
 
 ### Add search result custom label and custom description
 
@@ -745,8 +745,8 @@ If you want more customization for the label or description, then you can define
 class ItemResource < Avo::BaseResource
   …
   # Avo label for Ransack search result list
-  field :my_custom_label, 
-    as: :text, 
+  field :my_custom_label,
+    as: :text,
     as_label: true,
     hide_on: :all \
   do |model|
@@ -756,8 +756,8 @@ class ItemResource < Avo::BaseResource
   end
 
   # Avo description for Ransack search result list
-  field :my_custom_description, 
-    as: :text, 
+  field :my_custom_description,
+    as: :text,
     as_description: true,
     hide_on: :all \
   do |model|
@@ -775,11 +775,11 @@ Edit file `app/avo/resources/item_resource.rb`:
 
 ```ruby
 class ItemResource < Avo::BaseResource
-  …    
-  field :demo_external_image, … 
-    as_avatar: :circle 
   …
-```    
+  field :demo_external_image, …
+    as_avatar: :circle
+  …
+```
 
 
 ### Add search form fields
@@ -792,10 +792,10 @@ class ItemResource < Avo::BaseResource
   # Ransack search query
   self.search_query = ->(params:) do
     scope.ransack(
-      id_eq: params[:q], 
-      demo_text_cont: params[:q], 
-      demo_textarea_cont: params[:q], 
-      demo_trix_cont: params[:q], 
+      id_eq: params[:q],
+      demo_text_cont: params[:q],
+      demo_textarea_cont: params[:q],
+      demo_trix_cont: params[:q],
       m: "or"
     ).result(distinct: false)
   end

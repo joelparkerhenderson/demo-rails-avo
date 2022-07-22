@@ -4,9 +4,9 @@ end
 
 def self.fab_badge_sampler
     [
-        "info", 
-        "success", 
-        "warning", 
+        "info",
+        "success",
+        "warning",
         "danger",
     ]
 end
@@ -77,8 +77,8 @@ def self.fab_status_sampler
     [
         "done",
         "complete",
-        "waiting", 
-        "running", 
+        "waiting",
+        "running",
         "failed",
     ]
 end
