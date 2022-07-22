@@ -613,7 +613,7 @@ Avo provides various ways to manage tags. We prefer using the gem [acts-as-tagga
 Add to `Gemfile`:
 
 ```ruby
-# Tags and their associations
+# Use tags with associations
 gem 'acts-as-taggable-on', '~> 9.0'
 ```
 
@@ -636,17 +636,17 @@ field :tags,
   as: :tags
 ```
 
-Refresh the app. 
+Restart the app. 
 
 Verify that you can edit an item, create some tags, save the record, then see your tags.
 
 
-## ActiveStorage files
+## Use ActiveStorage for files
 
 Add to `Gemfile`:
 
 ```ruby
-# Use Active Storage variant
+# Use Active Storage variant for files
 gem "image_processing", "~> 1.2"
 ```
 
@@ -679,6 +679,127 @@ echo "alpha" > tmp/alpha.txt
 echo "bravo" > tmp/bravo.txt
 ```
 
-Refresh the app. 
+Restart the app. 
 
 Verify that you can edit an item, upload some files, save the record, then see your file entries.
+
+
+## Use Ransack for searching
+
+Add to `Gemfile`:
+
+```ruby
+# Use Ransack for searching
+gem 'ransack'
+```
+
+```sh
+bundle
+```
+
+Edit file `app/avo/resources/item_resource.rb` to add a Ransack search query as a class lambda, and an optional search query help string:
+
+```ruby
+class ItemResource < Avo::BaseResource
+  …
+  # Avo search for Ransack search query
+  self.search_query = ->(params:) do
+    scope.ransack(
+      id_eq: params[:q], 
+      m: "or"
+    ).result(distinct: false)
+  end
+
+  self.search_query_help = "- search by id"
+  …
+end
+```
+
+Restart the app. 
+
+Verify that Avo shows a top navigation search box, and that you can type in the box, and that the box shows a dropdown area that lists some matching items.
+
+
+### Add search result label and description
+
+The search currently lists each item with same resource title which is "Item". We want to also show a label and description.
+
+Edit file `app/avo/resources/item_resource.rb` to add option `as_label` and option `as_description` like this:
+
+```ruby
+class ItemResource < Avo::BaseResource
+  …
+  field :id, …
+    as_label: true
+  …
+  field :demo_text, … 
+    as_description: true
+  …
+```    
+
+### Add search result custom label and custom description
+
+If you want more customization for the label or description, then you can define your own fields with custom blocks such as:
+
+```ruby
+class ItemResource < Avo::BaseResource
+  …
+  # Avo label for Ransack search result list
+  field :my_custom_label, 
+    as: :text, 
+    as_label: true,
+    hide_on: :all \
+  do |model|
+    "Item #{model.id}"
+  rescue
+    "Item"
+  end
+
+  # Avo description for Ransack search result list
+  field :my_custom_description, 
+    as: :text, 
+    as_description: true,
+    hide_on: :all \
+  do |model|
+    ActionView::Base.full_sanitizer.sanitize(model.demo_text).truncate 130
+  rescue
+    ""
+  end
+  …
+```
+
+
+### Add search result list avatar
+
+Edit file `app/avo/resources/item_resource.rb`:
+
+```ruby
+class ItemResource < Avo::BaseResource
+  …    
+  field :demo_external_image, … 
+    as_avatar: :circle 
+  …
+```    
+
+
+### Add search form fields
+
+Edit file `app/avo/resources/item_resource.rb` to add a Ransack search query as a class lambda:
+
+```ruby
+class ItemResource < Avo::BaseResource
+  …
+  # Ransack search query
+  self.search_query = ->(params:) do
+    scope.ransack(
+      id_eq: params[:q], 
+      demo_text_cont: params[:q], 
+      demo_textarea_cont: params[:q], 
+      demo_trix_cont: params[:q], 
+      m: "or"
+    ).result(distinct: false)
+  end
+  …
+end
+```
+

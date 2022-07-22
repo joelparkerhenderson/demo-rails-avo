@@ -9,9 +9,45 @@ class ItemResource < Avo::BaseResource
   # Enable eager loading for the index view.
   self.includes = []
 
-  # self.search_query = ->(params:) do
-  #   scope.ransack(id_eq: params[:q], m: "or").result(distinct: false)
-  # end
+  # Avo search for Ransack
+  self.search_query = ->(params:) do
+    scope.ransack(
+      id_eq: params[:q], 
+      demo_boolean_true: params[:q],
+      demo_text_cont: params[:q], 
+      demo_textarea_cont: params[:q], 
+      demo_trix_cont: params[:q], 
+      m: "or"
+    ).result(distinct: false)
+  end
+
+  self.search_query_help = "- search by id, text, etc."
+
+  # Avo label for Ransack search result list
+    field :avo_label, 
+    as: :text, 
+    as_label: true,
+    hide_on: :all \
+  do |model|
+    if model.id
+      "Item #{model.id}"
+    else
+      "Item"
+    end
+  rescue
+    "Item"
+  end
+
+  # Avo description for Ransack search result list
+  field :avo_description, 
+    as: :text,
+    as_description: true,
+    hide_on: :all \
+  do |model|
+    ActionView::Base.full_sanitizer.sanitize(model.body).truncate 130
+  rescue
+    "description goes here"
+  end
 
   # All the fields we want
 
@@ -73,7 +109,8 @@ class ItemResource < Avo::BaseResource
     as: :external_image,
     name: 'External Image',
     help: "help goes here",
-    sortable: true
+    sortable: true,
+    as_avatar: true
 
   #TODO
   # field :demo_file, 

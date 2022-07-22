@@ -45,11 +45,14 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
-# Use Active Storage variant
+# Avo for administration
+gem "avo"
+
+# Active Storage variant for files
 gem "image_processing", "~> 1.2"
 
-# Avo administration
-gem "avo"
+# Ransack for searching
+gem 'ransack'
 
 # Tags and their associations
 gem 'acts-as-taggable-on', '~> 9.0'
